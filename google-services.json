@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "675677680317",
+    "firebase_url": "https://proyecto-de-barri-1.firebaseio.com",
+    "project_id": "proyecto-de-barri-1",
+    "storage_bucket": "proyecto-de-barri-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675677680317:android:e1c15152faa50d2b",
+        "android_client_info": {
+          "package_name": "com.example.flutterperpillapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675677680317-s3lvu8iarjbjn8v3rn8tlj0agua729ci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-mhm49FNytLpx03fZoCTjkJUxQUh-Y3s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
