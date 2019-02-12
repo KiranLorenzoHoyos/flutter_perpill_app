@@ -29,7 +29,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Form(
+      body: SingleChildScrollView(
         key: _formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
