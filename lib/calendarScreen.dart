@@ -5,8 +5,9 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class CalendarScreen extends StatefulWidget {
-  const CalendarScreen({Key key, this.user}) : super(key: key);
+  const CalendarScreen({Key key, this.user, this.date}) : super(key: key);
   final FirebaseUser user;
+  final String date;
   void handleNewDate(date) {
     print("handleNewDate ${date}");
   }
@@ -54,10 +55,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
               ),
               new Calendar(
                 isExpandable: true,
-//                dayBuilder: (c, day){
-//
-//                },
-              //showTodayAction: true,
               ),
               new Divider(
                 height: 50.0,
@@ -67,5 +64,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
         ),
       ),
     );
+  }
+  void addDate() async{
+    String _date = Calendar().onDateSelected.toString();
   }
 }

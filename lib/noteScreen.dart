@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_perpill_app/calendarScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class NoteScreen extends StatefulWidget {
   NoteScreen({Key key, this.title}) : super(key: key);
@@ -19,18 +20,12 @@ class _NoteScreenState extends State<NoteScreen> {
   bool _value3 = false;
   bool _value4 = false;
   bool _value5 = false;
-
-
   String _note = '';
 
   void _onChanged1(bool value) => setState(() => _value1 = value);
-
   void _onChanged2(bool value) => setState(() => _value2 = value);
-
   void _onChanged3(bool value) => setState(() => _value3 = value);
-
   void _onChanged4(bool value) => setState(() => _value4 = value);
-
   void _onChanged5(bool value) => setState(() => _value5 = value);
 
   @override
@@ -118,7 +113,8 @@ class _NoteScreenState extends State<NoteScreen> {
                 activeColor: Colors.cyan[200],
                 title: new Text('He tenido relaciones',
                     style: new TextStyle(
-                        fontWeight: FontWeight.bold)),
+                        fontWeight: FontWeight.bold)
+                ),
               ),
             ),
             Padding(
@@ -138,13 +134,14 @@ class _NoteScreenState extends State<NoteScreen> {
   }
 
   void addData() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final FirebaseUser user = await auth.currentUser();
+    final userId = user.uid;
     Firestore.instance.runTransaction((Transaction transaction) async {
-      CollectionReference reference = Firestore.instance.collection('Perfiles/-LYWD5NOurqTTi70ybuW/eventos');
-      DocumentReference documentReference = reference.document();
-
-      documentReference.setData({"Valor1": _value1, "Valor2": _value2, "Valor3": _value3, "Valor4": _value4, "Valor5": _value5, "Nota": _note}
-
-      );
+      CollectionReference reference = Firestore.instance.collection('Perfiles/$userId/eventos');
+      reference.add({
+        "Valor1": _value1, "Valor2": _value2, "Valor3": _value3, "Valor4": _value4, "Valor5": _value5, "Nota": _note
+      });
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return CalendarScreen();
       }));

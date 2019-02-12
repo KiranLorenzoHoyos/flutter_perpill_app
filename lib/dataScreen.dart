@@ -3,13 +3,12 @@ import 'package:flutter_perpill_app/main.dart';
 import 'package:flutter_perpill_app/calendarScreen.dart';
 import 'package:flutter_perpill_app/registerScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DataScreen extends StatefulWidget {
-  DataScreen({Key key, this.title, this.email, this.password}) : super(key: key);
+  const DataScreen({Key key, this.title, this.user}) : super(key: key);
   final String title;
-  final String email;
-  final String password;
-
+  final FirebaseUser user;
   @override
   _DataScreenState createState() => _DataScreenState();
 }
@@ -24,8 +23,8 @@ class _DataScreenState extends State<DataScreen> {
   String _weight = '';
   String _age = '';
   String _dateText = '';
-  String _email='';
-  String _password='';
+  String _email = '';
+  String _password = '';
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -173,7 +172,7 @@ class _DataScreenState extends State<DataScreen> {
                       splashColor: Colors.deepPurple,
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return MyHomePage(title: "Registro");
+                          return MyHomePage(title: "PERPILL");
                         }));
                       },
                     ),
@@ -201,7 +200,7 @@ class _DataScreenState extends State<DataScreen> {
     Firestore.instance.runTransaction((Transaction transaction)async{
       CollectionReference reference = Firestore.instance.collection('Perfiles');
       await reference.add({
-        "first": _first, "height": _height, "weight": _weight, "date": _dateTime, "age": _age, "email": _email, "password": _password
+        "first": _first, "height": _height, "weight": _weight, "date": _dateTime, "age": _age
       });
       Navigator.push(context, MaterialPageRoute(builder: (context){
         return CalendarScreen();

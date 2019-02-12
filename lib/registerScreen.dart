@@ -122,7 +122,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     splashColor: Colors.deepPurple,
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context){
-                        return MyHomePage();
+                        return MyHomePage(title: "PERPILL");
                       }));
                     },
                   ),
@@ -144,6 +144,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
   void signUp() async{
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();
@@ -151,7 +152,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
         Navigator.of(context).pop();
         Navigator.push(context, MaterialPageRoute(builder: (context){
-          return DataScreen(title: "Registro");
+          return DataScreen(title: "Datos");
         }));
       } catch(e){
         print(e.message);
