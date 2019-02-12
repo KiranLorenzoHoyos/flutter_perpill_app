@@ -46,7 +46,7 @@ class _DataScreenState extends State<DataScreen> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: SingleChildScrollView(
+      body: Form(
         key: _formKey,
         child: Padding(
           padding: const EdgeInsets.only(top: 40),

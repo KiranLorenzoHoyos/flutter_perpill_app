@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: SingleChildScrollView(
+      body: Form(
         key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
